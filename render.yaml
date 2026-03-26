@@ -1,7 +1,7 @@
 services:
   - type: web
     name: developer-portfolio-api
-    runtime: node
+    env: node
     plan: free
     buildCommand: npm install
     startCommand: npm start
@@ -19,8 +19,9 @@ services:
       - key: RECEIVER_EMAIL
         sync: false
 
-  - type: static_site
+  - type: web
     name: developer-portfolio-web
+    env: static
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     pullRequestPreviewsEnabled: false
