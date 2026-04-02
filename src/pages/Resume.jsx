@@ -51,7 +51,7 @@ const Resume = () => {
           </p>
 
           <a
-            href="/GeneralCV.pdf"
+            href="/GENERAL_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 text-sm font-semibold"
