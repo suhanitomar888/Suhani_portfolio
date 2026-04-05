@@ -40,6 +40,42 @@ const Certificates = () => {
       image: '/freecodecamp.png',
       credentialUrl: 'https://www.freecodecamp.org/certification/suhanitomar_123/responsive-web-design',
     },
+    {
+      title: 'Master Generative AI & Generative AI Tools (ChatGPT & more)',
+      issuer: 'Infosys Springboard',
+      date: 'August 2025',
+      credentialId: 'INF-GENAI-2025',
+      description: 'Exploration of large language models, prompt engineering, and modern AI applications.',
+      image: '/genAI.png',
+      credentialUrl: 'https://verify.onwingspan.com/',
+    },
+    {
+      title: 'Data Structures and Algorithms',
+      issuer: 'NeoColab',
+      date: 'December 2024',
+      credentialId: 'NEO-DSA-2024',
+      description: 'Deep dive into fundamental data structures and algorithmic problem-solving techniques.',
+      image: '/dsa.png',
+      credentialUrl: 'https://lpucolab438.examly.io/certificate/U2FsdGVkX19tGWUKTME15UMzeiQ65b%2B2zly084DGuGE%3D',
+    },
+    {
+      title: 'Object Oriented Programming',
+      issuer: 'NeoColab',
+      date: 'December 2024',
+      credentialId: 'NEO-OOP-2024',
+      description: 'Comprehensive course covering C++ programming fundamentals and object-oriented concepts.',
+      image: '/cppNeo.png',
+      credentialUrl: 'https://lpucolab438.examly.io/certificate/U2FsdGVkX186AA4PVkWS2TlHScS0DJbZLnJ7ehkHO3E%3D',
+    },
+    {
+      title: 'Mastering in C: Basic to Beyond',
+      issuer: 'CSE Pathshala',
+      date: 'March 2024',
+      credentialId: 'CSEP-C-2024',
+      description: 'Foundational programming concepts, syntax, and logic building in C.',
+      image: '/CsePathshala C.png',
+      credentialUrl: 'https://csepathshala.com/',
+    },
   ]
 
   return (
@@ -59,15 +95,21 @@ const Certificates = () => {
             className="glass-card reveal-up group relative z-0 flex flex-col p-4 transition-all duration-300 hover:z-10 hover:scale-[1.02]" 
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            {cert.image && (
-              <div className="certificate-image-wrapper relative mb-4 flex aspect-[4/3] items-center justify-center rounded-xl border border-[color:var(--line)] bg-white/50">
+            <div className="certificate-image-wrapper relative mb-4 flex aspect-[4/3] items-center justify-center rounded-xl border border-[color:var(--line)] bg-white/50 overflow-hidden">
+              {cert.image ? (
                 <img 
                   src={cert.image} 
                   alt={cert.title} 
                   className="h-full w-full rounded-lg object-contain p-2 transition-all duration-300 ease-in-out group-hover:z-20 group-hover:-translate-y-2 group-hover:scale-110 group-hover:shadow-2xl"
                 />
-              </div>
-            )}
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-[color:var(--muted)]/50">
+                   <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                   </svg>
+                </div>
+              )}
+            </div>
             <div className="flex flex-grow flex-col">
               <h3 className="mb-1 text-base font-semibold text-[color:var(--text)] line-clamp-2">{cert.title}</h3>
               <p className="mb-2 text-sm font-semibold text-[color:var(--brand)]">{cert.issuer}</p>
@@ -84,7 +126,7 @@ const Certificates = () => {
                   rel="noopener noreferrer" 
                   className="inline-flex items-center gap-2 rounded-lg border border-[color:var(--line)] bg-[color:var(--bg-secondary)] px-4 py-2 text-xs font-semibold text-[color:var(--text)] transition-all duration-300 hover:border-[color:var(--brand)] hover:text-[color:var(--brand)] hover:shadow-md"
                 >
-                  View Certificate
+                  Credentials
                   <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -97,88 +139,103 @@ const Certificates = () => {
 
       {/* Desktop Accordion Layout */}
       <div 
-        className="hidden lg:flex w-full h-[380px] gap-4" 
+        className="hidden lg:flex flex-col gap-8 w-full" 
         onMouseLeave={() => setHoveredIndex(null)}
       >
-        {certificates.map((cert, index) => {
-          const isActive = hoveredIndex === index;
-          return (
-            <div
-              key={`accordion-${cert.credentialId}`}
-              className={`group relative rounded-2xl transition-all duration-500 ease-in-out cursor-pointer ${
-                hoveredIndex === null ? 'flex-1' : isActive ? 'flex-[4.5]' : 'flex-[0.8]'
-              }`}
-              onMouseEnter={() => setHoveredIndex(index)}
-            >
-              {/* Background Image & Accordion Dark Overlay (Standalone Pop-out mechanics) */}
-              <div 
-                className={`absolute inset-0 w-full h-full rounded-2xl transition-all duration-300 ease-in-out ${
-                  hoveredIndex === null ? 'opacity-0 z-0' : 'opacity-100 z-0 hover:z-50 hover:scale-[1.15] hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
-                }`}
-              >
-                <img 
-                  src={cert.image} 
-                  alt={cert.title} 
-                  className="h-full w-full object-cover rounded-2xl transition-transform duration-500" 
-                />
-                <div className={`absolute inset-0 rounded-2xl transition-all duration-500 pointer-events-none ${isActive ? 'bg-black/10' : 'bg-black/70 backdrop-blur-[2px]'}`} />
-              </div>
-
-              {/* Standard Neutral View */}
-              <div 
-                className={`absolute inset-0 transition-all duration-500 ease-in-out z-20 glass-card bg-[color:var(--bg)] w-full h-full flex flex-col p-4 ${
-                  hoveredIndex === null ? 'opacity-100 scale-100 delay-100' : 'opacity-0 scale-95 pointer-events-none'
-                }`}
-              >
-                {cert.image && (
-                  <div className="relative mb-4 flex aspect-[4/3] w-full shrink-0 border items-center justify-center rounded-xl border-[color:var(--line)] bg-white/50 overflow-hidden">
-                    <img src={cert.image} alt={cert.title} className="h-full w-full object-contain p-2" />
-                  </div>
-                )}
-                <div className="flex flex-grow flex-col">
-                  <div className="mb-1 flex items-start justify-between gap-2">
-                    <h3 className="text-base font-bold text-[color:var(--text)] line-clamp-2">{cert.title}</h3>
-                    <span className="font-display text-xl font-bold text-[color:var(--brand)]/50 shrink-0">{(index + 1).toString().padStart(2, '0')}</span>
-                  </div>
-                  <p className="mb-2 text-sm font-semibold text-[color:var(--brand)]">{cert.issuer}</p>
-                  <div className="flex flex-wrap gap-2 text-[10px] font-medium uppercase tracking-wider">
-                    <span className="rounded-full border border-[color:var(--line)] px-2 py-0.5 text-[color:var(--muted)]">{cert.date}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute inset-0 flex flex-col justify-end p-5 z-10 pointer-events-none">
-                <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 transition-all duration-500 ${hoveredIndex !== null && !isActive ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-4'}`}>
-                   <span className="font-display text-4xl font-bold text-white/50">{(index + 1).toString().padStart(2, '0')}</span>
-                </div>
-
-                <div className={`relative flex flex-col border border-white/20 bg-black/60 p-6 backdrop-blur-md rounded-xl w-full transition-all duration-500 transform pointer-events-auto ${isActive ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-8 absolute bottom-5 left-5 right-5 w-auto pointer-events-none'}`}>
-                    <div className="mb-2 flex items-start justify-between gap-4">
-                      <h3 className="line-clamp-2 text-xl font-bold text-white drop-shadow-md">{cert.title}</h3>
-                      <span className="font-display text-3xl font-bold text-white/30 hidden xl:block">{(index + 1).toString().padStart(2, '0')}</span>
-                    </div>
-                    <p className="mb-3 font-semibold text-[color:var(--brand-soft)]">{cert.issuer}</p>
-                    {cert.description && (
-                      <p className="mb-5 line-clamp-2 text-sm text-white/80">{cert.description}</p>
+        {Array.from({ length: Math.ceil(certificates.length / 4) }).map((_, rowIndex) => (
+          <div key={`row-${rowIndex}`} className="flex w-full h-[380px] gap-4">
+            {certificates.slice(rowIndex * 4, (rowIndex + 1) * 4).map((cert, localIndex) => {
+              const index = rowIndex * 4 + localIndex;
+              const isActive = hoveredIndex === index;
+              return (
+                <div
+                  key={`accordion-${cert.credentialId}`}
+                  className={`group relative rounded-2xl transition-all duration-500 ease-in-out cursor-pointer ${
+                    hoveredIndex === null ? 'flex-1' : isActive ? 'flex-[4.5]' : 'flex-[0.8]'
+                  }`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                >
+                  {/* Background Image & Accordion Dark Overlay (Standalone Pop-out mechanics) */}
+                  <div 
+                    className={`absolute inset-0 w-full h-full rounded-2xl transition-all duration-300 ease-in-out ${
+                      hoveredIndex === null ? 'opacity-0 z-0' : 'opacity-100 z-0 hover:z-50 hover:scale-[1.15] hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
+                    }`}
+                  >
+                    {cert.image ? (
+                      <img 
+                        src={cert.image} 
+                        alt={cert.title} 
+                        className="h-full w-full object-cover rounded-2xl transition-transform duration-500" 
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-[color:var(--bg-secondary)] rounded-2xl border border-[color:var(--line)]"></div>
                     )}
-                    <div className="mt-auto flex">
-                      <a
-                        href={cert.credentialUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--brand)] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[color:var(--brand)] hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] pointer-events-auto"
-                      >
-                        View Certificate
-                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
+                    <div className={`absolute inset-0 rounded-2xl transition-all duration-500 pointer-events-none ${isActive ? 'bg-black/10' : 'bg-black/70 backdrop-blur-[2px]'}`} />
+                  </div>
+
+                  {/* Standard Neutral View */}
+                  <div 
+                    className={`absolute inset-0 transition-all duration-500 ease-in-out z-20 glass-card bg-[color:var(--bg)] w-full h-full flex flex-col p-4 ${
+                      hoveredIndex === null ? 'opacity-100 scale-100 delay-100' : 'opacity-0 scale-95 pointer-events-none'
+                    }`}
+                  >
+                    <div className="relative mb-4 flex aspect-[4/3] w-full shrink-0 border items-center justify-center rounded-xl border-[color:var(--line)] bg-white/50 overflow-hidden">
+                      {cert.image ? (
+                        <img src={cert.image} alt={cert.title} className="h-full w-full object-contain p-2" />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center text-[color:var(--muted)]/50">
+                           <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                           </svg>
+                        </div>
+                      )}
                     </div>
+                    <div className="flex flex-grow flex-col">
+                      <div className="mb-1 flex items-start justify-between gap-2">
+                        <h3 className="text-base font-bold text-[color:var(--text)] line-clamp-2">{cert.title}</h3>
+                        <span className="font-display text-xl font-bold text-[color:var(--brand)]/50 shrink-0">{(index + 1).toString().padStart(2, '0')}</span>
+                      </div>
+                      <p className="mb-2 text-sm font-semibold text-[color:var(--brand)]">{cert.issuer}</p>
+                      <div className="flex flex-wrap gap-2 text-[10px] font-medium uppercase tracking-wider">
+                        <span className="rounded-full border border-[color:var(--line)] px-2 py-0.5 text-[color:var(--muted)]">{cert.date}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col justify-end p-5 z-10 pointer-events-none">
+                    <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 transition-all duration-500 ${hoveredIndex !== null && !isActive ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-4'}`}>
+                       <span className="font-display text-4xl font-bold text-white/50">{(index + 1).toString().padStart(2, '0')}</span>
+                    </div>
+
+                    <div className={`relative flex flex-col border border-white/20 bg-black/60 p-6 backdrop-blur-md rounded-xl w-full transition-all duration-500 transform pointer-events-auto ${isActive ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-8 absolute bottom-5 left-5 right-5 w-auto pointer-events-none'}`}>
+                        <div className="mb-2 flex items-start justify-between gap-4">
+                          <h3 className="line-clamp-2 text-xl font-bold text-white drop-shadow-md">{cert.title}</h3>
+                          <span className="font-display text-3xl font-bold text-white/30 hidden xl:block">{(index + 1).toString().padStart(2, '0')}</span>
+                        </div>
+                        <p className="mb-3 font-semibold text-[color:var(--brand-soft)]">{cert.issuer}</p>
+                        {cert.description && (
+                          <p className="mb-5 line-clamp-2 text-sm text-white/80">{cert.description}</p>
+                        )}
+                        <div className="mt-auto flex">
+                          <a
+                            href={cert.credentialUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--brand)] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[color:var(--brand)] hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] pointer-events-auto"
+                          >
+                            Credentials
+                            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )
-        })}
+              )
+            })}
+          </div>
+        ))}
       </div>
     </section>
   )

@@ -6,8 +6,8 @@ export const profile = {
   email: 'suhanitomar888@gmail.com',
   location: 'India',
   photo: '/Pic.jpeg',
-  resume: '/GENERAL_CV.pdf',
-  resumeFileName: 'GENERAL_CV.pdf',
+  resume: '/ccvv.pdf',
+  resumeFileName: 'ccvv.pdf',
   github: 'https://github.com/suhanitomar888',
   linkedin: 'https://www.linkedin.com/in/suhani-tomar/',
 }

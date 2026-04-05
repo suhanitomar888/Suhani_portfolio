@@ -81,7 +81,7 @@ const Home = () => {
               View Projects
             </a>
             <a
-              href="/GENERAL_CV.pdf"
+              href="/ccvv.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 inline-flex items-center justify-center"

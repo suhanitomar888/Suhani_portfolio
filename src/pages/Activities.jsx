@@ -4,7 +4,7 @@ const Activities = () => {
       title: 'Participated in Concoction 2024 – Intra-University Tech Fusion Hackathon',
       date: 'March 2024',
       description: 'Collaborated in a team to build innovative tech solutions at the LPU intra-university hackathon, working across disciplines.',
-      achievement: 'View Certificate',
+      achievement: 'Credentials',
       link: '/Hackathon.png',
     },
     {
